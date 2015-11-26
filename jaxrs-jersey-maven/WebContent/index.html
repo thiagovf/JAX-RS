@@ -11,24 +11,32 @@
 			$('#singer').append(data.singer);
 		});
 
-		
-	});
-	$('#postButton').click(function() {
-		console.log("yahoo");
-		/*
-		$.ajax({
-			headers: {
-		        Accept: 'application/json',
-		        Content-Type: 'application/json'
-		    },
-			type: "POST",
-			url : "jaxrs-jersey-maven/rest/hello/post",
-			data: JSON.stringify({title:'Wherever I May Roam', singer:'Metallica'}),
-			dataType: 'json'
-		}).then(function(data) {
-			console.log(data);
+		$('#postButton').click(function() {
+			$.ajax({
+				headers: { 
+			        'Accept': 'application/json',
+			        'Content-Type': 'application/json' 
+			    },
+				type: "POST",
+				url : "jaxrs-jersey-maven/rest/hello/post",
+				data: JSON.stringify({title:'Wherever I May Roam', singer:'Metallica'}),
+				dataType: 'json',
+				success: function (data) {
+					console.log('yahoo');
+				},
+				complete: function(xhr) {
+	                if (xhr.readyState == 4) {
+	                    if (xhr.status == 201) {
+	                    	console.log('Created');
+	                    }
+	                } else {
+	                	console.log('shits happens');
+	                }
+	            }
+			}).then(function(data) {
+				console.log('and then');
+			});
 		});
-		*/
 	});
 </script>
 <meta charset="ISO-8859-1">
@@ -43,7 +51,6 @@
 		<label for="singer">Cantor:</label>
 		<output id="singer"></output>
 	</div>
-	
 	<button id="postButton">Click</button>
 </body>
 </html>
