@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jaxrs-jersey-maven/webapp/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$.ajax({
+			url : "jaxrs-jersey-maven/rest/hello/get"
+		}).then(function(data) {
+			$('#title').append(data.title);
+			$('#singer').append(data.singer);
+		});
+
+		
+	});
+	$('#postButton').click(function() {
+		console.log("yahoo");
+		/*
+		$.ajax({
+			headers: {
+		        Accept: 'application/json',
+		        Content-Type: 'application/json'
+		    },
+			type: "POST",
+			url : "jaxrs-jersey-maven/rest/hello/post",
+			data: JSON.stringify({title:'Wherever I May Roam', singer:'Metallica'}),
+			dataType: 'json'
+		}).then(function(data) {
+			console.log(data);
+		});
+		*/
+	});
+</script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<label for="title">Título:</label>
+		<output id="title"></output>
+	</div>
+	<div>
+		<label for="singer">Cantor:</label>
+		<output id="singer"></output>
+	</div>
+	
+	<button id="postButton">Click</button>
+</body>
+</html>
